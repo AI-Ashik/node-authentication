@@ -1,7 +1,10 @@
+// database encryption authentication - make changes only in schema
+
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+
 const User = require("./models/user.model");
 
 const app = express();
@@ -15,7 +18,6 @@ mongoose
   })
   .catch((error) => {
     console.log(error);
-    process.exit(1);
   });
 
 app.use(cors());
@@ -23,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.sendFile(`${__dirname}/views/index.html`);
+  res.sendFile(`${__dirname}views/index.html`);
 });
 
 app.post("/register", async (req, res) => {
